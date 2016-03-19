@@ -16,14 +16,14 @@ public class Main {
   public static boolean colCheck(int[][] grid, int col) {
     short stat = 0;
     for(int i=0; i<9; i++) {
-      stat |= (short)(Math.pow(2, grid[row][i]-1));
+      stat |= (short)(Math.pow(2, grid[i][col]-1));
     }
     return stat == (short)(Math.pow(2, 9)-1);
   }
 
   public static boolean gridCheck(int[][] grid) {
     for(int box=0; box<9; box++) {
-      stat = 0;
+      short stat = 0;
       for(int i=0; i<9; i++) {
         stat |= (short)(Math.pow(2, grid[i/3+(box/3)*3][i%3+(box%3)*3]-1));
       }
@@ -37,15 +37,15 @@ public class Main {
     Scanner scan = new Scanner(System.in);
     int nCases = scan.nextInt();
     case_loop:
-    for(int nCase=1; nCase<=nCases; nCases++) {
+    for(int nCase=1; nCase<=nCases; nCase++) {
       int[][] grid = new int[9][9];
       for(int i=0; i<9; i++) {
         for(int j=0; j<9; j++) {
           grid[i][j] = scan.nextInt();
         }
-        scan.nextLine();
+        //scan.nextLine();
       }
-      scan.nextLine();
+      //scan.nextLine();
       for(int i=0; i<9; i++) {
         if(!colCheck(grid, i) || !rowCheck(grid, i)) {
           System.out.printf("Case %d: INCORRECT\n", nCase);
